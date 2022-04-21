@@ -15,9 +15,6 @@ for(i=0; i < data; i++){
         type:'hard',
     });
 }
-
-
-
 queueHard.process((job, done) => {
     const Filter = require('./defer-binding/implementation')({job:job});
     const next = 'medium';
