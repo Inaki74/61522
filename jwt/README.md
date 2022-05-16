@@ -85,6 +85,6 @@ Header Authorization Bearer eyJhbGciOiJSUzI1NiJ9.eyJfaWQiOiI2MjgyOGJiZTY5ZGM3YTR
         "creado": "2022-05-16T17:43:55.000Z",
         "__v": 0
     }
-]```
+]
 
 ```
