@@ -4,7 +4,7 @@ Servidor auth-server recibe usuario y password a autenticar.
 
 Si autenticación correcta, firma payload con clave privada (private.key) y retorna token.
 
-API peliculas para crear y listar peliculas requiere token de autenticación, si lo recibe en middleware verify
+API peliculas para crear y listar peliculas requiere token de autenticación, si lo recibe en middleware (verify),
 verifica el usuario con clave pública (public.key) y lo agrega a los documentos creados como su creador, por ej. cuando se crea una película.
 
 ## Generar par clave pública/privada
