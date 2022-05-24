@@ -9,7 +9,7 @@ class LogError extends Error{
 
     init(){
         const d = new Date();
-        this.date = `${d.getFullYear()}-${d.getMonth()}-${d.getDay()}`;
+        this.date = `${d.getFullYear()}-${d.getMonth()}-${d.getDay()}-${d.getHours()}-${d.getMinutes()}-${d.getSeconds()}-${d.getMilliseconds()}`;
         this.time = `${d.getHours()}:${d.getMinutes()}:${d.getSeconds()}`;
         this.dir = './log/';
         this.file = `${this.date}.log`;
@@ -24,16 +24,20 @@ class LogError extends Error{
     }
 
     log(){
-        fs.appendFile(this.getFolder(), this.getMessage(), function(err){
+        // Promisify
+        let p = new Promise(async (res, rej) => 
+        {
+            await fs.appendFile(this.getFolder(), this.getMessage(), err => {
                 if(!err){
-                    return this.getMessage();
+                    res(this.getMessage());
                 }
                 else{
-                    return new Error(err.message);
+                    rej(new Error(err.message));
                 }
-            }
-        );
-       
+            });
+        });
+
+        return p;
     }
 }
 module.exports = LogError;

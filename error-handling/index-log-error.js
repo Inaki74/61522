@@ -4,5 +4,5 @@ try{
     throw new LogError('otro error log...');
 }
 catch(e){
-    console.log(e.log());
+    e.log().then(res => console.log(res)).catch(err => console.log(err.message));
 }
